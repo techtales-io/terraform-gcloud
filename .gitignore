@@ -1,3 +1,13 @@
+# Editors
+.vscode/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# vscode-sops
+.decrypted~*.yaml
+
 # Local .terraform directories
 **/.terraform/*
 
@@ -34,4 +44,6 @@ override.tf.json
 terraform.rc
 **/**/.terraform.lock.hcl
 
-# Ignore sensitive data
+# Env files
+*.envrc
+*.env
