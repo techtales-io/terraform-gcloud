@@ -12,5 +12,10 @@ variable "project_number" {
 }
 
 variable "google_kms_key_rings" {
-  type = any
+  type = map(object({
+    id       = string
+    location = string
+    name     = string
+    project  = string
+  }))
 }

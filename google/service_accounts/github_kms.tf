@@ -6,7 +6,7 @@
 resource "google_service_account" "***REMOVED***" {
   account_id   = "***REMOVED***"
   display_name = "***REMOVED***"
-  description  = "bound to github workload-identity pool"
+  description  = "bound to github workload-identity pool, terraform-managed"
   project      = var.project_id
 }
 
@@ -14,7 +14,6 @@ resource "google_service_account" "***REMOVED***" {
 resource "google_kms_crypto_key" "github_action_sops" {
   name     = "github-action-sops"
   key_ring = var.google_kms_key_rings.home_infra.id
-  # rotation_period = "86400s" # 1 day
 
   lifecycle {
     prevent_destroy = true
@@ -38,9 +37,5 @@ resource "google_service_account_iam_binding" "***REMOVED***_workloadidentity" {
   ]
   service_account_id = google_service_account.***REMOVED***.id
   role               = "roles/iam.workloadIdentityUser"
-
-  # add repositories here
-  members = [
-    "principalSet://iam.googleapis.com/projects/${var.project_number}/locations/global/workloadIdentityPools/github/attribute.repository/techtales-io/terraform-github"
-  ]
+  members            = local.github_kms
 }

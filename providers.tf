@@ -3,7 +3,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 provider "google" {
-  project = ***REMOVED***
-  region  = ***REMOVED***
-  zone    = ***REMOVED***
+  project = var.project_id
+  region  = var.location
+  zone    = var.zone
 }

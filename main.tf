@@ -11,10 +11,8 @@ terraform {
     }
   }
   backend "s3" {
-    endpoint                    = "***REMOVED***"
     bucket                      = "terraform"
     key                         = "techtales/gcloud/terraform.tfstate"
-    region                      = "home"
     skip_credentials_validation = true
     skip_metadata_api_check     = true
     skip_region_validation      = true
@@ -24,9 +22,8 @@ terraform {
 
 module "google" {
   source   = "./google"
-  location = ***REMOVED***
-  # zone           = ***REMOVED***
-  # project_name   = ***REMOVED***
-  project_id     = ***REMOVED***
-  project_number = "***REMOVED***"
+  location = var.location
+  # zone           = var.zone
+  project_id     = var.project_id
+  project_number = var.project_number
 }
