@@ -3,7 +3,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 provider "google" {
-  project = "techtales"
-  region  = "europe-west3"
-  zone    = "europe-west3-c"
+  project = var.project_id
+  region  = var.location
+  zone    = var.zone
 }

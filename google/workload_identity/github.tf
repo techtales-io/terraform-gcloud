@@ -5,7 +5,7 @@
 resource "google_iam_workload_identity_pool" "github" {
   workload_identity_pool_id = "github"
   display_name              = "github"
-  description               = "Identity pool for github"
+  description               = "Identity pool for github, terraform-managed"
   project                   = var.project_id
   disabled                  = false
 }
