@@ -152,6 +152,7 @@ No resources.
 | <a name="input_location"></a> [location](#input\_location) | n/a | `string` | n/a | yes |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | n/a | `string` | n/a | yes |
 | <a name="input_project_number"></a> [project\_number](#input\_project\_number) | n/a | `string` | n/a | yes |
+| <a name="input_users"></a> [users](#input\_users) | n/a | `string` | n/a | yes |
 | <a name="input_zone"></a> [zone](#input\_zone) | n/a | `string` | n/a | yes |
 
 ### Outputs

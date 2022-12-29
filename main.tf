@@ -20,10 +20,11 @@ terraform {
   }
 }
 
+
 module "google" {
-  source   = "./google"
-  location = var.location
-  # zone           = var.zone
+  source         = "./google"
+  location       = var.location
   project_id     = var.project_id
   project_number = var.project_number
+  users          = var.users
 }
