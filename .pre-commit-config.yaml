@@ -16,6 +16,16 @@ repos:
           - README.md
           - .
 
+  - repo: https://github.com/thlorenz/doctoc
+    rev: v2.2.0
+    hooks:
+      - id: doctoc
+        args:
+          - --maxlevel
+          - "3"
+          - --github
+          - --notitle
+
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.76.0
     hooks:
