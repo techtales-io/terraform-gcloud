@@ -26,6 +26,15 @@ module "kms" {
   project_id = var.project_id
 }
 
+module "project_iam" {
+  depends_on = [
+    module.api_services,
+    module.service_accounts
+  ]
+  source     = "./project_iam"
+  project_id = var.project_id
+}
+
 module "service_accounts" {
   depends_on = [
     module.api_services,
