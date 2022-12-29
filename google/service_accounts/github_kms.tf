@@ -14,17 +14,10 @@ resource "google_service_account" "github_action_kms" {
 resource "google_kms_crypto_key" "github_action_sops" {
   name     = "github-action-sops"
   key_ring = var.google_kms_key_rings.home_infra.id
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 # bind service account to kms decryption key
 resource "google_kms_crypto_key_iam_member" "github_action_kms_decrypt" {
-  depends_on = [
-    google_service_account.github_action_kms
-  ]
   crypto_key_id = google_kms_crypto_key.github_action_sops.id
   role          = "roles/cloudkms.cryptoKeyDecrypter"
   member        = "serviceAccount:${google_service_account.github_action_kms.email}"
@@ -32,9 +25,6 @@ resource "google_kms_crypto_key_iam_member" "github_action_kms_decrypt" {
 
 # bind gcp service account to workload identity pool for specific github repositories
 resource "google_service_account_iam_binding" "github_action_kms_workloadidentity" {
-  depends_on = [
-    google_service_account.github_action_kms
-  ]
   service_account_id = google_service_account.github_action_kms.id
   role               = "roles/iam.workloadIdentityUser"
   members            = local.github_kms
