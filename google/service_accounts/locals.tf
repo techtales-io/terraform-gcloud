@@ -4,6 +4,8 @@
 
 
 locals {
+  # configure service account bindings
+  gworkspace_infra = concat(split(",", var.users), ["serviceAccount:${google_service_account.github_gworkspace_infra.email}"])
 
   # configure repositories for workload identity
 
