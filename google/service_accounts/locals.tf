@@ -15,6 +15,11 @@ locals {
 
   github_kms = [
     "${local.principal_set_github}techtales-io/terraform-github",
+    "${local.principal_set_github}techtales-io/terraform-gworkspace",
+  ]
+
+  github_gworkspace_infra = [
+    "${local.principal_set_github}techtales-io/terraform-gworkspace",
   ]
 
 }
