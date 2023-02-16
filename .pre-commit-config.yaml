@@ -5,39 +5,34 @@ default_stages:
   - push
 
 repos:
-  - repo: https://github.com/terraform-docs/terraform-docs
-    rev: v0.16.0
-    hooks:
-      - id: terraform-docs-go
-        args:
-          - --config
-          - .terraform-docs.yaml
-          - --output-file
-          - README.md
-          - .
-
   - repo: https://github.com/thlorenz/doctoc
     rev: v2.2.0
     hooks:
       - id: doctoc
         args:
+          - --update-only
           - --maxlevel
           - "3"
           - --github
           - --notitle
 
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.76.0
+    rev: v1.77.1
     hooks:
+      - id: terraform_docs
+        args:
+          - --hook-config=--path-to-file=README.md
+          - --args=--config=.terraform-docs.yaml
       - id: terraform_fmt
       - id: terraform_tflint
         args:
           - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
       # - id: terraform_tfsec
-      # - id: terraform_validate
+      #   args:
+      #     - --args=--config-file=__GIT_WORKING_DIR__/.tfsec.yaml
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v4.4.0
     hooks:
       - id: check-merge-conflict
       - id: check-added-large-files
@@ -59,7 +54,7 @@ repos:
           - --markdown-linebreak-ext=md
 
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.28.0
+    rev: v1.29.0
     hooks:
       - id: yamllint
         args:
@@ -67,7 +62,7 @@ repos:
           - .yamllint.config.yaml
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.3.1
+    rev: v1.4.2
     hooks:
       - id: remove-crlf
       - id: remove-tabs
@@ -78,7 +73,7 @@ repos:
       - id: fix-smartquotes
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.32.2
+    rev: v0.33.0
     hooks:
       - id: markdownlint-fix
         args:

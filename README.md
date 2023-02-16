@@ -17,8 +17,8 @@
 
 # Techtales GCloud Infra
 
-## Table of Contents
-
+<details>
+  <summary style="font-size:1.2em;">Table of Contents</summary>
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -42,6 +42,7 @@
   - [Outputs](#outputs)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+</details>
 
 ## Code-Style
 
@@ -128,7 +129,7 @@ Run `gcloud auth application-default login` to authenticate with GCP.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, <= 1.3.6 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, <= 1.3.9 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | 4.42.1 |
 
 ### Providers
