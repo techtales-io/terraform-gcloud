@@ -16,9 +16,9 @@ resource "google_kms_crypto_key" "vault_unseal" {
   key_ring = var.google_kms_key_rings.home_infra.id
 }
 
-# bind service account to kms decryption key
+# bind service account to kms key
 resource "google_kms_crypto_key_iam_member" "vault_unseal_decrypt" {
   crypto_key_id = google_kms_crypto_key.vault_unseal.id
-  role          = "roles/cloudkms.cryptoKeyDecrypter"
+  role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
   member        = "serviceAccount:${google_service_account.vault_unseal.email}"
 }
