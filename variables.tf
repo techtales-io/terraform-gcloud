@@ -2,7 +2,6 @@
 # CONFIGURE VARIABLES
 # --------------------------------------------------------------------------------
 
-
 variable "location" {
   type = string
 }
