@@ -15,9 +15,7 @@ jobs:
       pull-requests: write
 
     # set runner for job to run on
-    runs-on:
-      - self-hosted
-      - home-infra
+    runs-on: arc-runner-set-techtales-io
 
     # set envs available to all steps
     env:
