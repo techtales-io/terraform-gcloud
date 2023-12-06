@@ -3,7 +3,7 @@
 # --------------------------------------------------------------------------------
 
 provider "google" {
-  project = var.project_id
-  region  = var.location
-  zone    = var.zone
+  project = local.project_id
+  region  = local.location
+  zone    = local.zone
 }

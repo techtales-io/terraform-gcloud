@@ -13,7 +13,3 @@ variable "project_id" {
 variable "project_number" {
   type = string
 }
-
-variable "users" {
-  type = string
-}

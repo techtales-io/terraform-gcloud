@@ -3,11 +3,11 @@
 # --------------------------------------------------------------------------------
 
 terraform {
-  required_version = ">= 1.3.0, <= 1.4.0"
+  required_version = ">= 1.5.0, <= 1.5.7"
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "4.42.1"
+      version = "5.8.0"
     }
   }
 }
@@ -21,31 +21,29 @@ module "kms" {
   depends_on = [
     module.api_services,
   ]
-  source     = "./kms"
-  location   = var.location
-  project_id = var.project_id
+  source         = "./kms"
+  location       = var.location
+  project_id     = var.project_id
+  project_number = var.project_number
 }
 
 module "project_iam" {
   depends_on = [
     module.api_services,
-    module.service_accounts
   ]
-  source     = "./project_iam"
-  project_id = var.project_id
+  source         = "./project_iam"
+  project_id     = var.project_id
+  project_number = var.project_number
 }
 
 module "service_accounts" {
   depends_on = [
     module.api_services,
-    module.kms,
     module.workload_identity
   ]
-  source               = "./service_accounts"
-  project_id           = var.project_id
-  project_number       = var.project_number
-  users                = var.users
-  google_kms_key_rings = module.kms.google_kms_key_rings
+  source         = "./service_accounts"
+  project_id     = var.project_id
+  project_number = var.project_number
 }
 
 module "workload_identity" {

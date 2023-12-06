@@ -3,11 +3,18 @@
 # --------------------------------------------------------------------------------
 
 terraform {
-  required_version = ">= 1.3.0, <= 1.4.0"
+  required_version = ">= 1.5.0, <= 1.5.7"
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "4.42.1"
+      version = "5.8.0"
     }
   }
+}
+
+# add keyring
+resource "google_kms_key_ring" "home_infra" {
+  name     = "home-infra"
+  project  = var.project_id
+  location = var.location
 }

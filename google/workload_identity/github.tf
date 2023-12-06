@@ -1,5 +1,5 @@
 # --------------------------------------------------------------------------------
-# CONFIGURE WORKLOAD IDENTITY POOL FOR GITHUB ACTIONS
+# CONFIGURE WORKLOAD IDENTITY FOR GITHUB ACTIONS
 # --------------------------------------------------------------------------------
 
 resource "google_iam_workload_identity_pool" "github" {
@@ -11,9 +11,6 @@ resource "google_iam_workload_identity_pool" "github" {
 }
 
 resource "google_iam_workload_identity_pool_provider" "github_oidc_provider" {
-  depends_on = [
-    google_iam_workload_identity_pool.github
-  ]
   workload_identity_pool_id          = google_iam_workload_identity_pool.github.workload_identity_pool_id
   workload_identity_pool_provider_id = "github-oidc-provider"
   display_name                       = "github-oidc-provider"
@@ -23,7 +20,6 @@ resource "google_iam_workload_identity_pool_provider" "github_oidc_provider" {
   attribute_mapping = {
     "google.subject"       = "assertion.sub"
     "attribute.actor"      = "assertion.actor"
-    "attribute.aud"        = "assertion.aud"
     "attribute.repository" = "assertion.repository"
   }
   oidc {

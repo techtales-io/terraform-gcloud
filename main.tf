@@ -3,11 +3,11 @@
 # --------------------------------------------------------------------------------
 
 terraform {
-  required_version = ">= 1.3.0, <= 1.4.0"
+  required_version = ">= 1.5.0, <= 1.5.7"
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "4.42.1"
+      version = "5.8.0"
     }
   }
   backend "s3" {
@@ -20,11 +20,9 @@ terraform {
   }
 }
 
-
 module "google" {
   source         = "./google"
-  location       = var.location
-  project_id     = var.project_id
-  project_number = var.project_number
-  users          = var.users
+  location       = local.location
+  project_id     = local.project_id
+  project_number = local.project_number
 }

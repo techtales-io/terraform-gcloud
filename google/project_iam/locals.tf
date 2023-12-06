@@ -3,11 +3,12 @@
 # --------------------------------------------------------------------------------
 
 locals {
-  serviceaccount_suffix = "@${var.project_id}.iam.gserviceaccount.com"
+  # serviceaccount_suffix = "@${var.project_id}.iam.gserviceaccount.com"
+  principal_set_github = "principalSet://iam.googleapis.com/projects/${var.project_number}/locations/global/workloadIdentityPools/github/attribute.repository"
 
   roles = {
     # github action for gcloud infra
-    "serviceAccount:***REMOVED***${local.serviceaccount_suffix}" = [
+    "${local.principal_set_github}/techtales-io/terraform-gcloud" = [
       "roles/cloudkms.admin",
       "roles/iam.serviceAccountAdmin",
       "roles/iam.serviceAccountKeyAdmin",

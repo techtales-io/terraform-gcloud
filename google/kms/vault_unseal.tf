@@ -13,7 +13,7 @@ resource "google_service_account" "vault_unseal" {
 # add key for sops encryption / decryption
 resource "google_kms_crypto_key" "vault_unseal" {
   name     = "vault-unseal"
-  key_ring = var.google_kms_key_rings.home_infra.id
+  key_ring = google_kms_key_ring.home_infra.id
 }
 
 # bind service account to kms key

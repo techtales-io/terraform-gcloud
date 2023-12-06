@@ -14,12 +14,21 @@ resource "google_service_account" "gworkspace_infra" {
 resource "google_service_account_iam_binding" "gworkspace_infra_serviceAccountUser" {
   service_account_id = google_service_account.gworkspace_infra.id
   role               = "roles/iam.serviceAccountUser"
-  members            = local.gworkspace_infra
+  members = [
+    "principalSet://iam.googleapis.com/projects/${var.project_number}/locations/global/workloadIdentityPools/github/attribute.repository/techtales-io/terraform-gworkspace",
+    "user:***REMOVED***",
+    "user:***REMOVED***",
+  ]
 }
 
 # grant service account impersonation members token creator
 resource "google_service_account_iam_binding" "gworkspace_infra_serviceAccountTokenCreator" {
   service_account_id = google_service_account.gworkspace_infra.id
   role               = "roles/iam.serviceAccountTokenCreator"
-  members            = concat(local.gworkspace_infra, ["serviceAccount:${google_service_account.gworkspace_infra.email}"])
+  members = [
+    "serviceAccount:${google_service_account.gworkspace_infra.email}",
+    "principalSet://iam.googleapis.com/projects/${var.project_number}/locations/global/workloadIdentityPools/github/attribute.repository/techtales-io/terraform-gworkspace",
+    "user:***REMOVED***",
+    "user:***REMOVED***",
+  ]
 }
