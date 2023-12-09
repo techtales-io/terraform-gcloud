@@ -3,21 +3,26 @@
 # --------------------------------------------------------------------------------
 
 variable "location" {
-  type = string
+  description = "preferred region for gcloud resources"
+  type        = string
 }
 
 variable "zone" {
-  type = string
+  description = "preferred zone for gcloud resources"
+  type        = string
 }
 
 variable "project_id" {
-  type = string
+  description = "gcloud project id"
+  type        = string
 }
 
 variable "project_number" {
-  type = string
+  description = "gcloud project number"
+  type        = string
 }
 
 variable "users" {
-  type = string
+  description = "list of users eligible for gworkspace maintenance"
+  type        = string
 }
