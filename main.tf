@@ -22,7 +22,8 @@ terraform {
 
 module "google" {
   source         = "./google"
-  location       = local.location
-  project_id     = local.project_id
-  project_number = local.project_number
+  location       = var.location
+  project_id     = var.project_id
+  project_number = var.project_number
+  users          = var.users
 }

@@ -44,6 +44,7 @@ module "service_accounts" {
   source         = "./service_accounts"
   project_id     = var.project_id
   project_number = var.project_number
+  users          = var.users
 }
 
 module "workload_identity" {
