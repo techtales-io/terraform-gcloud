@@ -9,7 +9,7 @@ resource "google_kms_crypto_key" "github_action_sops" {
 }
 
 # bind workload identity pool to kms decryption key
-resource "google_kms_crypto_key_iam_binding" "***REMOVED***_decrypt" {
+resource "google_kms_crypto_key_iam_binding" "github_action_decrypt" {
   crypto_key_id = google_kms_crypto_key.github_action_sops.id
   role          = "roles/cloudkms.cryptoKeyDecrypter"
   members = [
