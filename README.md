@@ -129,7 +129,7 @@ Run `gcloud auth application-default login` to authenticate with GCP.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.0, <= 1.5.7 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.0, <= 1.6.5 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | 5.8.0 |
 
 ### Providers
