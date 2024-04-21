@@ -9,6 +9,10 @@ terraform {
       source  = "hashicorp/google"
       version = "5.8.0"
     }
+    vault = {
+      source  = "hashicorp/vault"
+      version = "4.2.0"
+    }
   }
 }
 
@@ -41,10 +45,9 @@ module "service_accounts" {
     module.api_services,
     module.workload_identity
   ]
-  source         = "./service_accounts"
-  project_id     = var.project_id
-  project_number = var.project_number
-  users          = var.users
+  source     = "./service_accounts"
+  project_id = var.project_id
+  users      = var.users
 }
 
 module "workload_identity" {

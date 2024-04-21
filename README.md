@@ -126,6 +126,7 @@ Provide the content of `secrets.sops.yaml` as `.envrc`, f.e. with direnv.
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.0, <= 1.6.5 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | 5.8.0 |
+| <a name="requirement_vault"></a> [vault](#requirement\_vault) | 4.2.0 |
 
 ### Providers
 

@@ -1,10 +1,9 @@
 # --------------------------------------------------------------------------------
-# CONFIGURE GWORKSPACE SA FOR GROUPS AND USERS
+# CONFIGURE SERVICE ACCOUNT
 # --------------------------------------------------------------------------------
 
 locals {
-  # configure service account bindings
-  gworkspace_infra = concat(split(",", var.users), ["principalSet://iam.googleapis.com/projects/${var.project_number}/locations/global/workloadIdentityPools/github/attribute.repository/techtales-io/terraform-gworkspace"])
+  gworkspace_infra = concat(split(",", var.users))
 }
 
 # create gcp service account
@@ -26,5 +25,8 @@ resource "google_service_account_iam_binding" "gworkspace_infra_serviceAccountUs
 resource "google_service_account_iam_binding" "gworkspace_infra_serviceAccountTokenCreator" {
   service_account_id = google_service_account.gworkspace_infra.id
   role               = "roles/iam.serviceAccountTokenCreator"
-  members            = concat(local.gworkspace_infra, ["serviceAccount:${google_service_account.gworkspace_infra.email}"])
+  members = concat(local.gworkspace_infra, [
+    "serviceAccount:${google_service_account.atlantis.email}",
+    "serviceAccount:${google_service_account.gworkspace_infra.email}",
+  ])
 }

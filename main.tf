@@ -10,6 +10,10 @@ terraform {
       source  = "hashicorp/google"
       version = "5.8.0"
     }
+    vault = {
+      source  = "hashicorp/vault"
+      version = "4.2.0"
+    }
   }
   backend "s3" {
     bucket                      = "terraform"
